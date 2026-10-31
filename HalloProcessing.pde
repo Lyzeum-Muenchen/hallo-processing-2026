@@ -1,3 +1,4 @@
+
 int x = 600;
 int y = 150;
 
@@ -11,12 +12,25 @@ void setup() {
 }
 
 void draw() {
-  background(247,79,12);
+  background(0,0,50);
   x = x + gx;
   y = y + gy;
   if (y - 10 <= 0) {
     gy = -gy;
   }
+  if (x - 10 <= 0) {
+    gx = -gx;
+  }
+  if (y + 10 >= height) {
+    gy = -gy;
+  }
+  if (x + 10 >= width) {
+    gx = -gx;
+  }
   
-  circle(x, y, 20);
+  fill(255,100,0);
+  noStroke();
+  ellipse(x-10, y, 20, 38);
+  ellipse(x, y, 20, 40);
+  ellipse(x+10, y, 20, 38);
 }
