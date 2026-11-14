@@ -1,12 +1,14 @@
-
-int x = 600;
+int x = 400;
 int y = 150;
 
 int gx = -2;
 int gy = -1;
 
+int SPALTEN = 10;
+int ZEILEN = 5;
+
 void setup() {
-  size(800, 200);
+  size(500, 700);
   background(247, 79, 12);
   text(x, 50, 50); 
 }
@@ -15,16 +17,16 @@ void draw() {
   background(0,0,50);
   x = x + gx;
   y = y + gy;
-  if (y - 10 <= 0) {
+  if (y - 20 <= 0) {
     gy = -gy;
   }
-  if (x - 10 <= 0) {
+  if (x - 20 <= 0) {
     gx = -gx;
   }
-  if (y + 10 >= height) {
+  if (y + 20 >= height) {
     gy = -gy;
   }
-  if (x + 10 >= width) {
+  if (x + 20 >= width) {
     gx = -gx;
   }
   
@@ -33,4 +35,10 @@ void draw() {
   ellipse(x-10, y, 20, 38);
   ellipse(x, y, 20, 40);
   ellipse(x+10, y, 20, 38);
+  
+  float blockbreite = (width - 40)/(SPALTEN + 0.2 * (SPALTEN - 1) );
+  float blockhoehe  = (height - 40)/(ZEILEN + 0.2 * (ZEILEN - 1) ) * 0.33;
+  for (int i = 0; i < SPALTEN; i = i+1) {
+    rect (20 + i * 1.2 * blockbreite, 20, blockbreite, blockhoehe);
+  }
 }
