@@ -26,7 +26,7 @@ void draw() {
   if (y + 20 >= height) {
     gy = -gy;
   }
-  if (x + 20 >= width) {
+  if (x + 20 >= width) { 
     gx = -gx;
   }
   
@@ -36,9 +36,14 @@ void draw() {
   ellipse(x, y, 20, 40);
   ellipse(x+10, y, 20, 38);
   
-  float blockbreite = (width - 40)/(SPALTEN + 0.2 * (SPALTEN - 1) );
-  float blockhoehe  = (height - 40)/(ZEILEN + 0.2 * (ZEILEN - 1) ) * 0.33;
+  float blockbreite = (width  - 40)/(SPALTEN + 0.2 * (SPALTEN - 1) );
+  float blockhoehe  = (height - 40)/(ZEILEN  + 0.2 * (ZEILEN - 1) ) * 0.33;
+  for (int j = 0; j < ZEILEN; j = j+1) {
+    colorMode(RGB);
+    fill(255/(ZEILEN) * j,255,255);
+    colorMode(RGB);
   for (int i = 0; i < SPALTEN; i = i+1) {
-    rect (20 + i * 1.2 * blockbreite, 20, blockbreite, blockhoehe);
+    rect (20 + i * 1.2 * blockbreite, 20 + j * 1.2 * blockhoehe, blockbreite, blockhoehe);
+    }
   }
 }
