@@ -1,11 +1,13 @@
 int x = 400;
 int y = 150;
 
-int gx = -2;
-int gy = -1;
+int gx = -3;
+int gy = -2;
 
 int SPALTEN = 10;
 int ZEILEN = 5;
+
+int kürbisg = 40;
 
 void setup() {
   size(500, 700);
@@ -43,7 +45,17 @@ void draw() {
     fill(255/(ZEILEN) * j,255,255);
     colorMode(RGB);
   for (int i = 0; i < SPALTEN; i = i+1) {
+    if(
+       x - kürbisg / 2 <= 20 + i * 1.2 * blockbreite + blockbreite &&
+       y - kürbisg / 2 <= 20 + j * 1.2 * blockhoehe + blockhoehe &&
+       x + kürbisg / 2 >= 20 + i * 1.2 * blockbreite &&
+       y + kürbisg / 2 >= 20 + j * 1.2 * blockhoehe 
+       
+    ) { 
+    println("kolidirt");
+    } else { 
     rect (20 + i * 1.2 * blockbreite, 20 + j * 1.2 * blockhoehe, blockbreite, blockhoehe);
     }
   }
+}
 }
